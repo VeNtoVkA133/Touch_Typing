@@ -4,6 +4,7 @@ let result;
 let rA = "Строки совпадают";
 let rB = "Строки не совпадают";
 let numresultstr;
+let strLength;
 
 
 function getRandom(i) {
@@ -26,33 +27,39 @@ function newLevel() {
 
     // Создаем новую строку в зависимости от уровня
 
-    let level = +prompt("Введите цифру от 1 до 6 для выбора уровня согластно числу. 0 для выхода");
+    let level = +prompt('Введите цифру от 1 до 6 для выбора уровня согластно числу. 0 для выхода\n1 уровень = символы из первой строки "qwertyuiop",\n2 уровень = символы из второй строки "asdfghjkl",\n3 уровень = символы из третьей строки "zxcvbnm",\n4 уровень = символы из первой и второй строки,\n5 уровень = символы из второй и третьей строки,\n6 уровень = символы из первой и третьей строки.');
     if (level == 0) {
         newGame();
     } else
     if (level == 1) {
+        strLength = fstr;
         for (let i = 0; i < fstr.length; i++) {
             str[i] = fstr[i];
         }
     } else if (level == 2) {
+        strLength = sstr;
         for (let i = 0; i < sstr.length; i++) {
             str[i] = sstr[i];
         }
     } else if (level == 3) {
+        strLength = tstr;
         for (let i = 0; i < tstr.length; i++) {
             str[i] = tstr[i];
         }
     } else if (level == 4) {
+        strLength = sfstr;
         let fsstr = fstr.concat(sstr);
         for (let i = 0; i < sfstr.length; i++) {
             str[i] = fsstr[i];
         }
     } else if (level == 5) {
+        strLength = ststr;
         let ststr = sstr.concat(tstr);
         for (let i = 0; i < ststr.length; i++) {
             str[i] = ststr[i];
         }
     } else if (level == 6) {
+        strLength = ftstr;
         let ftstr = fstr.concat(tstr);
         for (let i = 0; i < ftstr.length; i++) {
             str[i] = ftstr[i];
@@ -63,12 +70,20 @@ function newLevel() {
     }
 }
 
+/*
+function strLength() {
+    for(let i = 0; i < numresultstr; i++) {
+        str.push("");
+    }
+}
+*/
+
 function newStr(numres) {
     st = "";
     //Задаём символы в выходящую строку
     for (let i = 0; i < numres; i++) {
-        n = getRandom(str.length);
-        st += str[n]
+        n = getRandom(strLength.length);
+        st += strLength[n];
     }
 }
 
@@ -89,7 +104,7 @@ function newGame() {
 
         if (result == rA) {
             alert(result);
-            let ans = +prompt(rA + ". Введите 1, если хотите начать заного. 0 Чтобы вернуться к настройкам,другую цифру, чтобы завершить")
+            let ans = +prompt(rA + ".\n Введите 1, если хотите начать заного.\n 0 Чтобы вернуться к настройкам,\n другую цифру, чтобы завершить")
             if (ans == 1) {
                 newGame();
             } else if (ans == 0) {
